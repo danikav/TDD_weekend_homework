@@ -10,7 +10,11 @@ class Room():
         self.songs.append(new_song)
 
     def check_guest_in(self, new_guest):
-        self.guests.append(new_guest)
+        if len(self.guests) < self.capacity: 
+            self.guests.append(new_guest)
+        else:
+            return "Sorry this room is full!"
 
     def check_guest_out(self, guest):
-        self.guests.remove(guest)
+        if len(self.guests) > 0:
+            self.guests.remove(guest)
