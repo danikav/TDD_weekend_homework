@@ -6,6 +6,7 @@ class Room():
         self.entry_fee = entry_fee
         self.songs = songs
         self.guests = []
+        self.till = 0
 
     def add_song(self, new_song):
         self.songs.append(new_song)
@@ -23,5 +24,18 @@ class Room():
     def charges_fee(self, guest):
         if guest.money >= self.entry_fee:
             guest.money -= self.entry_fee
+            self.till += self.entry_fee
         else:
             return "Sorry you can't afford this"
+
+    def check_favourite_song(self, guest):
+        for song in self.songs:
+            if guest.favourite_song == song.song_name:
+                return "Whooo"
+        else:
+            return "Oh no"
+
+    def check_cash_in_till(self):
+        return self.till
+    
+        
